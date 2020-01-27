@@ -1,0 +1,598 @@
+module project1(clk,counter0,counter1,counter2,counter3,ALU_out);
+input clk;
+output counter0;
+output counter1;
+output counter2;
+output counter3;
+wire [7:0]ROM_out;
+wire [7:0]alu_b;
+output [7:0]ALU_out;
+
+wire[2:0]opp;
+
+assign opp[0]=ROM_out[5];
+assign opp[1]=ROM_out[6];
+assign opp[2]=ROM_out[7];
+
+wire[7:0]alu_a;
+
+assign alu_a[0]=ROM_out[0];
+assign alu_a[1]=ROM_out[1];
+assign alu_a[2]=ROM_out[2];
+assign alu_a[3]=ROM_out[3];
+assign alu_a[4]=ROM_out[4];
+assign alu_a[5]=ROM_out[5];
+assign alu_a[6]=ROM_out[6];
+assign alu_a[7]=ROM_out[7];
+
+counter clock(clk,counter0,counter1,counter2,counter3);
+
+ROM rom(counter0,counter1,counter2,counter3,ROM_out);
+
+ALU alu(alu_a,alu_b,opp,ALU_out); 
+
+accumulator ac(ALU_out,clk,alu_b);
+
+endmodule
+
+module ROM(counter0,counter1,counter2,counter3,ROM_out);
+
+input counter0,counter1,counter2,counter3;
+output [15:0]ROM_out;
+
+decoder foursixteen(counter0,counter1,counter2,counter3,adress);
+
+wire [15:0]adress;
+assign adress[0]=adress0;
+assign adress[1]=adress1;
+assign adress[2]=adress2;
+assign adress[3]=adress3;
+assign adress[4]=adress4;
+assign adress[5]=adress5;
+assign adress[6]=adress6;
+assign adress[7]=adress7;
+assign adress[8]=adress8;
+assign adress[9]=adress9;
+assign adress[10]=adress10;
+assign adress[11]=adress11;
+assign adress[12]=adress12;
+assign adress[13]=adress13;
+assign adress[14]=adress14;
+assign adress[15]=adress15;
+
+wire [7:0]ROM_out_final0;
+wire [7:0]ROM_out_final1;
+wire [7:0]ROM_out_final2;
+wire [7:0]ROM_out_final3;
+wire [7:0]ROM_out_final4;
+wire [7:0]ROM_out_final5;
+wire [7:0]ROM_out_final6;
+wire [7:0]ROM_out_final7;
+wire [7:0]ROM_out_final8;
+wire [7:0]ROM_out_final9;
+wire [7:0]ROM_out_final10;
+wire [7:0]ROM_out_final11;
+wire [7:0]ROM_out_final12;
+wire [7:0]ROM_out_final13;
+wire [7:0]ROM_out_final14;
+wire [7:0]ROM_out_final15;
+
+wire [7:0]ROM_in0;
+assign ROM_in0[0]=0;
+assign ROM_in0[1]=0;
+assign ROM_in0[2]=0;
+assign ROM_in0[3]=0;
+assign ROM_in0[4]=0;
+assign ROM_in0[5]=0;
+assign ROM_in0[6]=0;
+assign ROM_in0[7]=1;
+
+wire [7:0]ROM_in1;
+assign ROM_in1[0]=1;
+assign ROM_in1[1]=0;
+assign ROM_in1[2]=0;
+assign ROM_in1[3]=0;
+assign ROM_in1[4]=0;
+assign ROM_in1[5]=0;
+assign ROM_in1[6]=0;
+assign ROM_in1[7]=0;
+
+wire [7:0]ROM_in2;
+assign ROM_in2[0]=0;
+assign ROM_in2[1]=1;
+assign ROM_in2[2]=0;
+assign ROM_in2[3]=0;
+assign ROM_in2[4]=0;
+assign ROM_in2[5]=0;
+assign ROM_in2[6]=0;
+assign ROM_in2[7]=0;
+
+wire [7:0]ROM_in3;
+assign ROM_in3[0]=1;
+assign ROM_in3[1]=1;
+assign ROM_in3[2]=0;
+assign ROM_in3[3]=0;
+assign ROM_in3[4]=0;
+assign ROM_in3[5]=0;
+assign ROM_in3[6]=0;
+assign ROM_in3[7]=0;
+
+wire [7:0]ROM_in4;
+assign ROM_in4[0]=0;
+assign ROM_in4[1]=0;
+assign ROM_in4[2]=1;
+assign ROM_in4[3]=0;
+assign ROM_in4[4]=0;
+assign ROM_in4[5]=0;
+assign ROM_in4[6]=0;
+assign ROM_in4[7]=0;
+wire [7:0]ROM_in5;
+assign ROM_in5[0]=1;
+assign ROM_in5[1]=0;
+assign ROM_in5[2]=1;
+assign ROM_in5[3]=0;
+assign ROM_in5[4]=0;
+assign ROM_in5[5]=0;
+assign ROM_in5[6]=0;
+assign ROM_in5[7]=0;
+wire [7:0]ROM_in6;
+assign ROM_in6[0]=0;
+assign ROM_in6[1]=1;
+assign ROM_in6[2]=1;
+assign ROM_in6[3]=0;
+assign ROM_in6[4]=0;
+assign ROM_in6[5]=0;
+assign ROM_in6[6]=0;
+assign ROM_in6[7]=0;
+
+wire [7:0]ROM_in7;
+assign ROM_in7[0]=1;
+assign ROM_in7[1]=1;
+assign ROM_in7[2]=1;
+assign ROM_in7[3]=0;
+assign ROM_in7[4]=0;
+assign ROM_in7[5]=0;
+assign ROM_in7[6]=0;
+assign ROM_in7[7]=0;
+
+wire [7:0]ROM_in8;
+assign ROM_in8[0]=0;
+assign ROM_in8[1]=0;
+assign ROM_in8[2]=0;
+assign ROM_in8[3]=1;
+assign ROM_in8[4]=0;
+assign ROM_in8[5]=0;
+assign ROM_in8[6]=0;
+assign ROM_in8[7]=0;
+
+wire [7:0]ROM_in9;
+assign ROM_in9[0]=1;
+assign ROM_in9[1]=0;
+assign ROM_in9[2]=0;
+assign ROM_in9[3]=1;
+assign ROM_in9[4]=0;
+assign ROM_in9[5]=0;
+assign ROM_in9[6]=0;
+assign ROM_in9[7]=0;
+
+wire [7:0]ROM_in10;
+assign ROM_in10[0]=0;
+assign ROM_in10[1]=1;
+assign ROM_in10[2]=0;
+assign ROM_in10[3]=1;
+assign ROM_in10[4]=0;
+assign ROM_in10[5]=0;
+assign ROM_in10[6]=0;
+assign ROM_in10[7]=0;
+
+wire [7:0]ROM_in11;
+assign ROM_in11[0]=1;
+assign ROM_in11[1]=1;
+assign ROM_in11[2]=0;
+assign ROM_in11[3]=1;
+assign ROM_in11[4]=0;
+assign ROM_in11[5]=0;
+assign ROM_in11[6]=0;
+assign ROM_in11[7]=0;
+
+wire [7:0]ROM_in12;
+assign ROM_in12[0]=0;
+assign ROM_in12[1]=0;
+assign ROM_in12[2]=1;
+assign ROM_in12[3]=1;
+assign ROM_in12[4]=0;
+assign ROM_in12[5]=0;
+assign ROM_in12[6]=0;
+assign ROM_in12[7]=0;
+
+wire [7:0]ROM_in13;
+assign ROM_in13[0]=1;
+assign ROM_in13[1]=0;
+assign ROM_in13[2]=1;
+assign ROM_in13[3]=1;
+assign ROM_in13[4]=0;
+assign ROM_in13[5]=0;
+assign ROM_in13[6]=0;
+assign ROM_in13[7]=0;
+
+wire [7:0]ROM_in14;
+assign ROM_in14[0]=0;
+assign ROM_in14[1]=1;
+assign ROM_in14[2]=1;
+assign ROM_in14[3]=1;
+assign ROM_in14[4]=0;
+assign ROM_in14[5]=0;
+assign ROM_in14[6]=0;
+assign ROM_in14[7]=0;
+
+wire [7:0]ROM_in15;
+assign ROM_in15[0]=1;
+assign ROM_in15[1]=1;
+assign ROM_in15[2]=1;
+assign ROM_in15[3]=1;
+assign ROM_in15[4]=0;
+assign ROM_in15[5]=0;
+assign ROM_in15[6]=0;
+assign ROM_in15[7]=0;
+
+ROM_main in0(ROM_in0,adress0,ROM_out_final0);
+ROM_main in1(ROM_in1,adress1,ROM_out_final1);
+ROM_main in2(ROM_in2,adress2,ROM_out_final2);
+ROM_main in3(ROM_in3,adress3,ROM_out_final3);
+ROM_main in4(ROM_in4,adress4,ROM_out_final4);
+ROM_main in5(ROM_in5,adress5,ROM_out_final5);
+ROM_main in6(ROM_in6,adress6,ROM_out_final6);
+ROM_main in7(ROM_in7,adress7,ROM_out_final7);
+ROM_main in8(ROM_in8,adress8,ROM_out_final8);
+ROM_main in9(ROM_in9,adress9,ROM_out_final9);
+ROM_main in10(ROM_in10,adress10,ROM_out_final10);
+ROM_main in11(ROM_in11,adress11,ROM_out_final11);
+ROM_main in12(ROM_in12,adress12,ROM_out_final12);
+ROM_main in13(ROM_in13,adress13,ROM_out_final13);
+ROM_main in14(ROM_in14,adress14,ROM_out_final14);
+ROM_main in15(ROM_in15,adress15,ROM_out_final15);
+
+assign ROM_out[0]=ROM_out_final0[0] | ROM_out_final1[0] | ROM_out_final2[0] | ROM_out_final3[0] | ROM_out_final4[0] | ROM_out_final5[0] | ROM_out_final6[0] | ROM_out_final7[0] | ROM_out_final8[0] | ROM_out_final9[0] | ROM_out_final10[0] | ROM_out_final11[0] | ROM_out_final12[0] | ROM_out_final13[0] | ROM_out_final14[0] | ROM_out_final15[0];
+assign ROM_out[1]=ROM_out_final0[1] | ROM_out_final1[1] | ROM_out_final2[1] | ROM_out_final3[1] | ROM_out_final4[1] | ROM_out_final5[1] | ROM_out_final6[1] | ROM_out_final7[1] | ROM_out_final8[1] | ROM_out_final9[1] | ROM_out_final10[1] | ROM_out_final11[1] | ROM_out_final12[1] | ROM_out_final13[1] | ROM_out_final14[1] | ROM_out_final15[1];
+assign ROM_out[2]=ROM_out_final0[2] | ROM_out_final1[2] | ROM_out_final2[2] | ROM_out_final3[2] | ROM_out_final4[2] | ROM_out_final5[2] | ROM_out_final6[2] | ROM_out_final7[2] | ROM_out_final8[2] | ROM_out_final9[2] | ROM_out_final10[2] | ROM_out_final11[2] | ROM_out_final12[2] | ROM_out_final13[2] | ROM_out_final14[2] | ROM_out_final15[2];
+assign ROM_out[3]=ROM_out_final0[3] | ROM_out_final1[3] | ROM_out_final2[3] | ROM_out_final3[3] | ROM_out_final4[3] | ROM_out_final5[3] | ROM_out_final6[3] | ROM_out_final7[3] | ROM_out_final8[3] | ROM_out_final9[3] | ROM_out_final10[3] | ROM_out_final11[3] | ROM_out_final12[3] | ROM_out_final13[3] | ROM_out_final14[3] | ROM_out_final15[3];
+assign ROM_out[4]=ROM_out_final0[4] | ROM_out_final1[4] | ROM_out_final2[4] | ROM_out_final3[4] | ROM_out_final4[4] | ROM_out_final5[4] | ROM_out_final6[4] | ROM_out_final7[4] | ROM_out_final8[4] | ROM_out_final9[4] | ROM_out_final10[4] | ROM_out_final11[4] | ROM_out_final12[4] | ROM_out_final13[4] | ROM_out_final14[4] | ROM_out_final15[4];
+assign ROM_out[5]=ROM_out_final0[5] | ROM_out_final1[5] | ROM_out_final2[5] | ROM_out_final3[5] | ROM_out_final4[5] | ROM_out_final5[5] | ROM_out_final6[5] | ROM_out_final7[5] | ROM_out_final8[5] | ROM_out_final9[5] | ROM_out_final10[5] | ROM_out_final11[5] | ROM_out_final12[5] | ROM_out_final13[5] | ROM_out_final14[5] | ROM_out_final15[5];
+assign ROM_out[6]=ROM_out_final0[6] | ROM_out_final1[6] | ROM_out_final2[6] | ROM_out_final3[6] | ROM_out_final4[6] | ROM_out_final5[6] | ROM_out_final6[6] | ROM_out_final7[6] | ROM_out_final8[6] | ROM_out_final9[6] | ROM_out_final10[6] | ROM_out_final11[6] | ROM_out_final12[6] | ROM_out_final13[6] | ROM_out_final14[6] | ROM_out_final15[6];
+assign ROM_out[7]=ROM_out_final0[7] | ROM_out_final1[7] | ROM_out_final2[7] | ROM_out_final3[7] | ROM_out_final4[7] | ROM_out_final5[7] | ROM_out_final6[7] | ROM_out_final7[7] | ROM_out_final8[7] | ROM_out_final9[7] | ROM_out_final10[7] | ROM_out_final11[7] | ROM_out_final12[7] | ROM_out_final13[7] | ROM_out_final14[7] | ROM_out_final15[7];
+
+endmodule
+
+module ALU(alu_a,alu_b,opp,ALU_out);
+input [7:0]alu_a;
+input [7:0]alu_b;
+input [2:0]opp;
+output [7:0]ALU_out;
+
+wire [7:0]alu_out0;
+wire [7:0]alu_out1;
+wire [7:0]alu_out2;
+wire [7:0]alu_out3;
+wire [7:0]alu_out4;
+wire [7:0]alu_out5;
+wire [7:0]alu_out6;
+wire [7:0]alu_out7;
+//Operation Selections
+wire [7:0]opperation;
+assign opperation[0] =~opp[0]& ~opp[1] & ~opp[2];
+assign opperation[1] =opp[0] & ~opp[1] & ~opp[2];
+assign opperation[2] =~opp[0] & opp[1] & ~opp[2];
+assign opperation[3] =opp[0] & opp[1] & ~opp[2];
+assign opperation[4] =~opp[0] & ~opp[1] & opp[2];
+assign opperation[5] =opp[0] & ~opp[1] & opp[2];
+assign opperation[6] =~opp[0] & opp[1] & opp[2];
+assign opperation[7] =opp[0] & opp[1] & opp[2];
+
+//Operations
+//MOVE
+opp0 mov(alu_a,opperation[0],alu_out0);
+//ADD
+opp1 add(alu_a,alu_b,opperation[1],alu_out1);
+//SUBTRACTION
+opp2 sub(alu_a,alu_b,opperation[2],alu_out2);
+//XOR
+opp3 Xor(alu_a,alu_b,opperation[3],alu_out3);
+//AND
+opp4 aNd(alu_a,alu_b,opperation[4],alu_out4);
+//OR
+opp5 oR(alu_a,alu_b,opperation[5],alu_out5);
+//SHIFTRIGHT
+opp6 shfr(alu_a,opperation[6],alu_out6);
+//SHIFTLEFT
+opp7 shtl(alu_a,opperation[7],alu_out7);
+
+assign ALU_out[0]=alu_out0[0] | alu_out1[0] | alu_out2[0] | alu_out3[0] | alu_out4[0] | alu_out5[0] | alu_out6[0] | alu_out7[0] ;
+assign ALU_out[1]=alu_out0[1] | alu_out1[1] | alu_out2[1] | alu_out3[1] | alu_out4[1] | alu_out5[1] | alu_out6[1] | alu_out7[1] ;
+assign ALU_out[2]=alu_out0[2] | alu_out1[2] | alu_out2[2] | alu_out3[2] | alu_out4[2] | alu_out5[2] | alu_out6[2] | alu_out7[2] ;
+assign ALU_out[3]=alu_out0[3] | alu_out1[3] | alu_out2[3] | alu_out3[3] | alu_out4[3] | alu_out5[3] | alu_out6[3] | alu_out7[3] ;
+assign ALU_out[4]=alu_out0[4] | alu_out1[4] | alu_out2[4] | alu_out3[4] | alu_out4[4] | alu_out5[4] | alu_out6[4] | alu_out7[4] ;
+assign ALU_out[5]=alu_out0[5] | alu_out1[5] | alu_out2[5] | alu_out3[5] | alu_out4[5] | alu_out5[5] | alu_out6[5] | alu_out7[5] ;
+assign ALU_out[6]=alu_out0[6] | alu_out1[6] | alu_out2[6] | alu_out3[6] | alu_out4[6] | alu_out5[6] | alu_out6[6] | alu_out7[6] ;
+assign ALU_out[7]=alu_out0[7] | alu_out1[7] | alu_out2[7] | alu_out3[7] | alu_out4[7] | alu_out5[7] | alu_out6[7] | alu_out7[7] ;
+
+endmodule
+
+module accumulator(ALU_out,clk,alu_b);
+input [7:0]ALU_out;
+input clk;
+output [7:0]alu_b;
+
+jk ac0(ALU_out[0],0,~clk,alu_b[0]);
+jk ac1(ALU_out[1],0,~clk,alu_b[1]);
+jk ac2(ALU_out[2],0,~clk,alu_b[2]);
+jk ac3(ALU_out[3],0,~clk,alu_b[3]);
+jk ac4(ALU_out[4],0,~clk,alu_b[4]);
+jk ac5(ALU_out[5],0,~clk,alu_b[5]);
+jk ac6(ALU_out[6],0,~clk,alu_b[6]);
+jk ac7(ALU_out[7],0,~clk,alu_b[7]);
+
+endmodule
+
+module ROM_main(ROM_in,adress,ROM_out);
+
+input [7:0]ROM_in;
+input adress;
+output [7:0]ROM_out;
+
+assign ROM_out[0]=ROM_in[0]&adress;
+assign ROM_out[1]=ROM_in[1]&adress;
+assign ROM_out[2]=ROM_in[2]&adress;
+assign ROM_out[3]=ROM_in[3]&adress;
+assign ROM_out[4]=ROM_in[4]&adress;
+assign ROM_out[5]=ROM_in[5]&adress;
+assign ROM_out[6]=ROM_in[6]&adress;
+assign ROM_out[7]=ROM_in[7]&adress;
+
+endmodule
+
+
+module decoder(counter1,counter2,counter3,counter4,adress);
+input counter1,counter2,counter3,counter4;
+output [15:0] adress;
+assign adress[0] =~counter1 & ~counter2 & ~counter3 & ~counter4;
+assign adress[1] =counter1 & ~counter2 & ~counter3 & ~counter4;
+assign adress[2] =~counter1 & counter2 & ~counter3 & ~counter4;
+assign adress[3] =counter1 & counter2 & ~counter3 & ~counter4;
+assign adress[4] =~counter1 & ~counter2 & counter3 & ~counter4;
+assign adress[5] =counter1 & ~counter2 & counter3 & ~counter4;
+assign adress[6] =~counter1 & counter2 & counter3 & ~counter4;
+assign adress[7] =counter1 & counter2 & counter3 & ~counter4;
+assign adress[8] =~counter1 & ~counter2 & ~counter3 & counter4;
+assign adress[9] =counter1 & ~counter2 & ~counter3 & counter4;
+assign adress[10] =~counter1 & counter2 & ~counter3 & counter4;
+assign adress[11] =counter1 & counter2 & ~counter3 & counter4;
+assign adress[12] =~counter1 & ~counter2 & counter3 & counter4;
+assign adress[13] =counter1 & ~counter2 & counter3 & counter4;
+assign adress[14] =~counter1 & counter2 & counter3 & counter4;
+assign adress[15] =counter1 & counter2 & counter3 & counter4;
+endmodule
+
+module dff(q,d,clock);
+input d,clock;
+output q;
+reg q;
+
+always @(posedge (clock))q=d;
+
+endmodule
+
+
+module jk(j,k,clk,q);
+
+	input j,k,clk;
+	output q;
+	reg q;
+	
+	always@(posedge clk) begin
+	if(j==1&&k==0)
+	q=1;
+	else if(j==0&&k==1)
+	q=0;
+	else if(j==0&&k==0)
+	q=q;
+	else
+	q=~q;
+	end
+
+endmodule 
+
+
+module counter(clk,counter0,counter1,counter2,counter3);
+input clk;
+output counter0,counter1,counter2,counter3;
+wire w1,w2,w3,w4;
+	assign w1=~(q0&q1);
+	assign w2=clk&w1;
+	assign w3=(q1&q0);
+	assign w4=(q2&w3);
+	jk jk0(1,1,clk,q0);
+	
+	jk jk1(q0,q0,clk,q1);
+	
+	jk jk2(w3,w3,clk,q2);
+	
+	jk jk3(w4,w4,clk,q3);
+	
+ 
+	assign counter0=q0;
+	assign counter1=q1;
+	assign counter2=q2;
+	assign counter3=q3;
+
+endmodule
+
+//IN ALU OPERATION MODULES
+module opp0(alu_a,opperation,ALU_out);
+input [7:0]alu_a;
+input opperation;
+output [7:0]ALU_out;
+
+assign ALU_out[0] =alu_a[0]&opperation;
+assign ALU_out[1] =alu_a[1]&opperation;
+assign ALU_out[2] =alu_a[2]&opperation;
+assign ALU_out[3] =alu_a[3]&opperation;
+assign ALU_out[4] =alu_a[4]&opperation;
+assign ALU_out[5] =alu_a[5]&opperation;
+assign ALU_out[6] =alu_a[6]&opperation;
+assign ALU_out[7] =alu_a[7]&opperation;
+
+endmodule
+
+module opp1(alu_a,alu_b,opperation,ALU_out);
+input [7:0]alu_a;
+input [7:0]alu_b;
+input opperation;
+output [7:0]ALU_out;
+wire [7:0]sevenbit;
+wire [7:0]cout;
+
+full_adder bit0(alu_a[0],alu_b[0],0,sevenbit[0],cout[0]);
+full_adder bit1(alu_a[1],alu_b[1],cout[0],sevenbit[1],cout[1]);
+full_adder bit2(alu_a[2],alu_b[2],cout[1],sevenbit[2],cout[2]);
+full_adder bit3(alu_a[3],alu_b[3],cout[2],sevenbit[3],cout[3]);
+full_adder bit4(alu_a[4],alu_b[4],cout[3],sevenbit[4],cout[4]);
+full_adder bit5(alu_a[5],alu_b[5],cout[4],sevenbit[5],cout[5]);
+full_adder bit6(alu_a[6],alu_b[6],cout[5],sevenbit[6],cout[6]);
+full_adder bit7(alu_a[7],alu_b[7],cout[6],sevenbit[7],cout[7]);
+
+
+assign ALU_out[0] =sevenbit[0]&opperation;
+assign ALU_out[1] =sevenbit[1]&opperation;
+assign ALU_out[2] =sevenbit[2]&opperation;
+assign ALU_out[3] =sevenbit[3]&opperation;
+assign ALU_out[4] =sevenbit[4]&opperation;
+assign ALU_out[5] =sevenbit[5]&opperation;
+assign ALU_out[6] =sevenbit[6]&opperation;
+assign ALU_out[7] =sevenbit[7]&opperation;
+
+endmodule
+
+
+module opp2(alu_a,alu_b,opperation,ALU_out);
+input [7:0]alu_a;
+input [7:0]alu_b;
+input opperation;
+output [7:0]ALU_out;
+wire [7:0]sevenbit;
+wire [7:0]cout;
+
+full_adder bit0(alu_a[0],alu_b[0]^1,1,sevenbit[0],cout[0]);
+full_adder bit1(alu_a[1],alu_b[1]^1,cout[0],sevenbit[1],cout[1]);
+full_adder bit2(alu_a[2],alu_b[2]^1,cout[1],sevenbit[2],cout[2]);
+full_adder bit3(alu_a[3],alu_b[3]^1,cout[2],sevenbit[3],cout[3]);
+full_adder bit4(alu_a[4],alu_b[4]^1,cout[3],sevenbit[4],cout[4]);
+full_adder bit5(alu_a[5],alu_b[5]^1,cout[4],sevenbit[5],cout[5]);
+full_adder bit6(alu_a[6],alu_b[6]^1,cout[5],sevenbit[6],cout[6]);
+full_adder bit7(alu_a[7],alu_b[7]^1,cout[6],sevenbit[7],cout[7]);
+
+
+assign ALU_out[0] =sevenbit[0]&opperation;
+assign ALU_out[1] =sevenbit[1]&opperation;
+assign ALU_out[2] =sevenbit[2]&opperation;
+assign ALU_out[3] =sevenbit[3]&opperation;
+assign ALU_out[4] =sevenbit[4]&opperation;
+assign ALU_out[5] =sevenbit[5]&opperation;
+assign ALU_out[6] =sevenbit[6]&opperation;
+assign ALU_out[7] =sevenbit[7]&opperation;
+
+endmodule
+
+module opp3(alu_a,alu_b,opperation,ALU_out);
+input [7:0]alu_a;
+input [7:0]alu_b;
+input opperation;
+output [7:0]ALU_out;
+
+assign ALU_out[0] =(alu_a[0]^alu_b[0])&opperation;
+assign ALU_out[1] =(alu_a[1]^alu_b[1])&opperation;
+assign ALU_out[2] =(alu_a[2]^alu_b[2])&opperation;
+assign ALU_out[3] =(alu_a[3]^alu_b[3])&opperation;
+assign ALU_out[4] =(alu_a[4]^alu_b[4])&opperation;
+assign ALU_out[5] =(alu_a[5]^alu_b[5])&opperation;
+assign ALU_out[6] =(alu_a[6]^alu_b[6])&opperation;
+assign ALU_out[7] =(alu_a[7]^alu_b[7])&opperation;
+
+endmodule
+
+module opp4(alu_a,alu_b,opperation,ALU_out);
+input [7:0]alu_a;
+input [7:0]alu_b;
+input opperation;
+output [7:0]ALU_out;
+
+assign ALU_out[0] =(alu_a[0]&alu_b[0])&opperation;
+assign ALU_out[1] =(alu_a[1]&alu_b[1])&opperation;
+assign ALU_out[2] =(alu_a[2]&alu_b[2])&opperation;
+assign ALU_out[3] =(alu_a[3]&alu_b[3])&opperation;
+assign ALU_out[4] =(alu_a[4]&alu_b[4])&opperation;
+assign ALU_out[5] =(alu_a[5]&alu_b[5])&opperation;
+assign ALU_out[6] =(alu_a[6]&alu_b[6])&opperation;
+assign ALU_out[7] =(alu_a[7]&alu_b[7])&opperation;
+
+endmodule
+
+module opp5(alu_a,alu_b,opperation,ALU_out);
+input [7:0]alu_a;
+input [7:0]alu_b;
+input opperation;
+output [7:0]ALU_out;
+
+assign ALU_out[0] =(alu_a[0] | alu_b[0])&opperation;
+assign ALU_out[1] =(alu_a[1] | alu_b[1])&opperation;
+assign ALU_out[2] =(alu_a[2] | alu_b[2])&opperation;
+assign ALU_out[3] =(alu_a[3] | alu_b[3])&opperation;
+assign ALU_out[4] =(alu_a[4] | alu_b[4])&opperation;
+assign ALU_out[5] =(alu_a[5] | alu_b[5])&opperation;
+assign ALU_out[6] =(alu_a[6] | alu_b[6])&opperation;
+assign ALU_out[7] =(alu_a[7] | alu_b[7])&opperation;
+
+endmodule
+
+module opp6(alu_a,opperation,ALU_out);
+input [7:0]alu_a;
+input opperation;
+output [7:0]ALU_out;
+assign ALU_out[0] =(alu_a[7])&opperation;
+assign ALU_out[1] =(alu_a[0])&opperation;
+assign ALU_out[2] =(alu_a[1])&opperation;
+assign ALU_out[3] =(alu_a[2])&opperation;
+assign ALU_out[4] =(alu_a[3])&opperation;
+assign ALU_out[5] =(alu_a[4])&opperation;
+assign ALU_out[6] =(alu_a[5])&opperation;
+assign ALU_out[7] =(alu_a[6])&opperation;
+
+endmodule
+
+module opp7(alu_a,opperation,ALU_out);
+input [7:0]alu_a;
+input opperation;
+output [7:0]ALU_out;
+assign ALU_out[0] =(alu_a[1])&opperation;
+assign ALU_out[1] =(alu_a[2])&opperation;
+assign ALU_out[2] =(alu_a[3])&opperation;
+assign ALU_out[3] =(alu_a[4])&opperation;
+assign ALU_out[4] =(alu_a[5])&opperation;
+assign ALU_out[5] =(alu_a[6])&opperation;
+assign ALU_out[6] =(alu_a[7])&opperation;
+assign ALU_out[7] =(alu_a[0])&opperation;
+
+endmodule
+
+module full_adder(x,y,cin,sum,cout);
+ input x,y,cin;
+ output sum,cout;
+ wire w1,w2,w3;
+ 
+ and(w1,a,b);
+ and(w2,a,cin);
+ and(w3,b,cin);
+ or(cout,w1,w2,w3);
+ 
+ xor(s,a,b,cin);
+ 
+ endmodule
